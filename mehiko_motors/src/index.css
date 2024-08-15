@@ -44,7 +44,7 @@ header .presentation {
 }
 
 header .presentation::after {
-  content: 'Покупка авто за рубежом. Пригоняем авто из Китая, Кореи, США и ОАЭ';
+  content: 'Покупка авто за рубежом. Пригоняем авто из Китая, Кореи, США и ОАЭ.';
   position: absolute;
   top: 50px;
   left: 50px;
@@ -55,7 +55,7 @@ header .presentation::after {
 }
 
 header .presentation::before {
-  content: 'Работаем по всей России. Полное сопровождение от заказа до получения ЭПТС и учёта';
+  content: 'Работаем по всей России. Полное сопровождение от заказа до получения ЭПТС и учёта.';
   position: absolute;
   top: 200px;
   left: 53px;
