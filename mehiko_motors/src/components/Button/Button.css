@@ -1,0 +1,27 @@
+button {
+  border: none;
+  background-color: #B00000;
+  color: #fff;
+  padding: 10px 10px;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  float: right;
+  transition: 200ms ease-in-out;
+}
+
+button:hover {
+  opacity: 0.7;
+  
+}
+
+button a {
+  text-decoration: none;
+  color: #fff;
+}
+
+button a:hover{
+  text-decoration: none;
+  color: #fff;
+}
