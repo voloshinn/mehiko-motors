@@ -4,11 +4,18 @@ button {
   color: #fff;
   padding: 10px 10px;
   border-radius: 30px;
-  font-size: 17px;
+  font-size: 2vh;
   font-weight: 500;
   cursor: pointer;
-  float: right;
   transition: 200ms ease-in-out;
+  width: 19vh;
+  float: right;
+
+  @media (max-width: 480px) {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+  }
 }
 
 button:hover {

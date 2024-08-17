@@ -6,13 +6,12 @@ export default function Header() {
     <header>
       <div className='header-wrapper'>
         <span className='logo'>MEHIKO MOTORS</span>
-        <Button><a href="">Оставить заявку</a></Button>
-        <span className='phone-number'>
-          <p>+7 (909) 447-73-78 — Анастасия</p>
-          <p>+7 (989) 123-10-29 — Михаил</p>
-        </span>
+        <Button><a href="#feedback">Оставить заявку</a></Button>
       </div>
-      <div className='presentation'></div>
+      <div className='presentation'>
+        <div className='title'>Покупка авто за рубежом. Доставляем авто из Китая, Кореи, США и ОАЭ.</div>
+        <div className='subtitle'>Работаем по всей России. Полное сопровождение от заказа до получения ЭПТС и учёта.</div>
+      </div>
     </header>
   )
 }

@@ -1,0 +1,28 @@
+.telegram-title {
+  font-weight: 600;
+  font-size: 3vh;
+}
+
+.telegram-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.telegram-qr-code {
+  width: 40%;
+  @media (max-width: 480px) {
+    width: 80%;
+  }
+}
+
+.telegram-wrapper a {
+  text-decoration: none;
+  color: #ff0000;
+  font-size: 2.5vh;
+  transition: 0.4s;
+}
+
+.telegram-wrapper a:hover {
+  color: #B00000;
+  transform: scale(0.75);
+}

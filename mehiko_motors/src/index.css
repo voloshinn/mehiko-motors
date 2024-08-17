@@ -3,17 +3,10 @@
 * {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
 
-a:hover {
-  color: #535bf2;
-}
 
 body {
   background-color: #fff;
@@ -23,49 +16,56 @@ body {
 
 .wrapper {
   width: 80vw;
-  margin: 50px auto;
+  margin: 5.3vh auto;
+  @media (max-width: 600px) {
+    width: 95%;
+    margin: 8vh auto;
+  }
 }
 
 header .logo{
   font-weight: 600;
-  font-size: 25px;
+  font-size: 3vh;
 }
 
 header .presentation {
-  margin: 50px 0;
+  margin: 5.5vh 0;
   background: url('./img/2019-BMW-Z4-M40i-001-2000.jpg') no-repeat;
-  width: 100%;
-  height: 70vh;
+  min-width: 100%;
+  min-height: 70vh;
   background-size: cover;
-  background-position: center -50px;
+  background-position: center center;
   background-blend-mode: multiply;
   background-color: #bcbcbc;
-  position: relative;
 }
 
-header .presentation::after {
-  content: 'Покупка авто за рубежом. Пригоняем авто из Китая, Кореи, США и ОАЭ.';
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 600px;
-  font-size: 40px;
+header .presentation .title {
+  text-align: left;
+  min-width: 250px;
+  width: 48vw;
+  font-size: 4vh;
   font-weight: 600;
   color: #fff;
+  padding-top: 4vh;
+  margin-left: 2vw;
 }
 
-header .presentation::before {
-  content: 'Работаем по всей России. Полное сопровождение от заказа до получения ЭПТС и учёта.';
-  position: absolute;
-  top: 200px;
-  left: 53px;
-  width: 450px;
-  font-size: 20px;
+header .presentation .subtitle {
+  text-align: left;
+  min-width: 250px;
+  width: 37vw;
+  font-size: 2vh;
   font-weight: 300;
   color: #fff;
+  margin-left: 2vw;
+  padding-bottom: 6vh;
 }
 
 footer {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 10vh;
+}
+
+.second-wrapper {
+  width: 100%;
 }
