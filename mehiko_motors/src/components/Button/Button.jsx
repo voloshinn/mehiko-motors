@@ -1,7 +1,11 @@
 import './Button.css'
 
-export default function Button({ children }) {
+export default function Button({ children, ...props }) {
   return (
-    <button>{ children }</button>
+    <button
+    {...props}
+    >
+      { children }
+    </button>
   )
 }

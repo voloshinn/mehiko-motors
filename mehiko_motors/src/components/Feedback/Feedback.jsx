@@ -1,18 +1,102 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Button from '../Button/Button'
 import './Feedback.css'
 
 export default function Feedback() {
+  const [name, setName] = useState("")
+  const [surname, setSurname] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [auto, setAuto] = useState("")
+  
+  const [hasNameError, setHasNameError] = useState(false)
+  const [hasSurnameError, setHasSurnameError] = useState(false)
+  const [hasPhoneNumberError, setHasPhoneNumberError] = useState(false)
+  const [hasAutoError, setHasAutoError] = useState(false)
+
+  function handleChange(event) {
+    console.log(event.target.value)
+    if (event.target.id == "name") {
+      setName(event.target.value)
+      setHasNameError(event.target.value.trim().length === 0)
+    } else if (event.target.id == "surname") {
+      setSurname(event.target.value)
+      setHasSurnameError(event.target.value.trim().length === 0)
+    } else if (event.target.id == "phoneNumber") {
+      setPhoneNumber(event.target.value)
+      setHasPhoneNumberError(event.target.value.trim().length === 0)
+    } else if (event.target.id == "auto") {
+      setAuto(event.target.value)
+      setHasAutoError(event.target.value.trim().length === 0)
+    }
+    
+  }
+
   return (
     <div className='feedback-wrapper'>
       <span id='feedback' className='title'>Хотите расчитать стоимость определённой машины?</span>
       <span className='subtitle'>Оставьте заявку, и мы обязательно поможем вам.</span>
       <div className='feedback-form'>
         <form action="">
-          <input id='name' type="text" placeholder='ФИО'/> <br />
-          <input id='phoneNumber' type="tel" placeholder='+7 (900) 000-00-00'/> <br />
-          <input id='carName' type="text" placeholder='BMW X6, 3 поколение'/>
-          <br />
-          <input type="submit" id="submit" />
+          <input
+          type="text"
+          id='name'
+          value={name}
+          style={{
+            border: hasNameError ? '1px solid red' : null,
+          }}
+          onChange={handleChange}
+          placeholder='Имя'
+          /> <br />
+
+          <input
+          type="text"
+          id='surname'
+          value={surname}
+          style={{
+            border: hasSurnameError ? '1px solid red' : null,
+          }}
+          onChange={handleChange}
+          placeholder='Фамилия'
+          /> <br />
+
+          <input
+          type="tel"
+          id='phoneNumber'
+          value={phoneNumber}
+          style={{
+            border: hasPhoneNumberError ? '1px solid red' : null,
+          }}
+          onChange={handleChange}
+          placeholder='+7 (900) 000-00-00'
+          /> <br />
+
+          <input
+          type="text"
+          id='auto'
+          value={auto}
+          style={{
+            border: hasAutoError ? '1px solid red' : null,
+          }}
+          onChange={handleChange}
+          placeholder='BMW X6, 3 поколение'
+          /> <br />
+          
+          <pre>
+            name: {name}
+            <br />
+            surname: {surname}
+            <br />
+            phoneNumber: {phoneNumber}
+            <br />
+            auto: {auto}
+          </pre>
+
+          <Button disabled={
+            hasNameError ||
+            hasSurnameError ||
+            hasPhoneNumberError ||
+            hasAutoError
+            }>Отправить</Button>
         </form>
       </div>
     </div>
