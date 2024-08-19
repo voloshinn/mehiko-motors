@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../Button/Button'
 import './Feedback.css'
 
@@ -12,6 +12,8 @@ export default function Feedback() {
   const [hasSurnameError, setHasSurnameError] = useState(false)
   const [hasPhoneNumberError, setHasPhoneNumberError] = useState(false)
   const [hasAutoError, setHasAutoError] = useState(false)
+
+  const [formValid, setFormValid] = useState(false)
 
   function handleChange(event) {
     console.log(event.target.value)
@@ -29,6 +31,27 @@ export default function Feedback() {
       setHasAutoError(event.target.value.trim().length === 0)
     }
     
+  }
+
+  useEffect(() => {
+    if (hasNameError || hasSurnameError || hasPhoneNumberError || hasAutoError) {
+      setFormValid(true)
+    } else {
+      setFormValid(false)
+    }
+  }, [hasNameError, hasSurnameError, hasPhoneNumberError, hasAutoError])
+
+  const submitData = (e) => {
+    e.preventDefault();
+    fetch(' http://localhost:5000/telegram', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, surname, phoneNumber, auto }),
+  })
+      .then((response) => response.json())
+      .then((result) => alert(result.response.msg));
   }
 
   return (
@@ -91,12 +114,7 @@ export default function Feedback() {
             auto: {auto}
           </pre>
 
-          <Button disabled={
-            hasNameError ||
-            hasSurnameError ||
-            hasPhoneNumberError ||
-            hasAutoError
-            }>Отправить</Button>
+          <Button disabled={formValid} onClick={submitData}>Отправить</Button>
         </form>
       </div>
     </div>
