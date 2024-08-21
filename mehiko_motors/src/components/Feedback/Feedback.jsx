@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Button from '../Button/Button'
 import './Feedback.css'
+import { toast } from 'react-toastify';
+
 
 export default function Feedback() {
   const [name, setName] = useState("")
@@ -51,7 +53,7 @@ export default function Feedback() {
       body: JSON.stringify({ name, surname, phoneNumber, auto }),
   })
       .then((response) => response.json())
-      .then((result) => alert(result.response.msg));
+      .then((result) => toast.success(result.message));
   }
 
   return (

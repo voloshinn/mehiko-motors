@@ -5,10 +5,10 @@ module.exports.sendMsg = (req, res) => {
   let reqBody = req.body
 
   let fields = [
-    '<b>Имя</b>:' + reqBody.name,
-    '<b>Фамилия</b>:' + reqBody.surname,
-    '<b>Номер телефона</b>:' + reqBody.phoneNumber,
-    '<b>Авто для рассчёта</b>:' + reqBody.auto,
+    '<b>Имя</b>:', reqBody.name,
+    '<b>Фамилия</b>:', reqBody.surname,
+    '<b>Номер телефона</b>:', reqBody.phoneNumber,
+    '<b>Авто для рассчёта</b>:', reqBody.auto,
   ]
 
   let msg =''
@@ -28,7 +28,7 @@ module.exports.sendMsg = (req, res) => {
         if (response.statusCode === 200) {
             res.status(200).json({
                 status: 'ok',
-                message: 'Заявка успешно отправлена! Ожидайте звонка.',
+                message: 'Заявка успешно отправлена! Ожидайте обратной связи.',
             });
         }
         if (response.statusCode !== 200) {
