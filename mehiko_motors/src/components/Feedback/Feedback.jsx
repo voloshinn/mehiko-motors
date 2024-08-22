@@ -105,16 +105,6 @@ export default function Feedback() {
           onChange={handleChange}
           placeholder='BMW X6, 3 поколение'
           /> <br />
-          
-          <pre>
-            name: {name}
-            <br />
-            surname: {surname}
-            <br />
-            phoneNumber: {phoneNumber}
-            <br />
-            auto: {auto}
-          </pre>
 
           <Button disabled={formValid} onClick={submitData}>Отправить</Button>
         </form>
