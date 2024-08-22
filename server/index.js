@@ -6,7 +6,7 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
-app.use('/', index)
+app.use('/api', index)
 
 const start = () => {
   try {
