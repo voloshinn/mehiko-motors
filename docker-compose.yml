@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  mehiko_motors_api:
+    container_name: mehiko_motors_api
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/api
+      - /api/node_modules
+    command: npm run dev
+    ports:
+      - "3001:3001"
+
+  mehiko_motors_frontend:
+    container_name: mehiko_motors_frontend
+    build:
+      context: ./mehiko_motors
+      dockerfile: Dockerfile
+    volumes:
+      - ./mehiko_motors:/frontend
+      - /frontend/node_modules
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    ports:
+      - "5173:5173"

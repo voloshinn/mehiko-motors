@@ -45,7 +45,7 @@ export default function Feedback() {
 
   const submitData = (e) => {
     e.preventDefault();
-    fetch(' http://localhost:5000/telegram', {
+    fetch(' http://localhost:3001/telegram', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
