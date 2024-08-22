@@ -45,7 +45,7 @@ export default function Feedback() {
 
   const submitData = (e) => {
     e.preventDefault();
-    fetch(' http://localhost:3001/telegram', {
+    fetch('https://mehiko-motors.duckdns.org/api/telegram', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
