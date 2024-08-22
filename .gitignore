@@ -1,0 +1,10 @@
+mehiko_motors/node_modules
+mehiko_motors/dist
+mehiko_motors/package-lock.json
+
+server/node_modules
+server/dist
+server/config/config.json
+server/package-lock.json
+
+**/.idea
