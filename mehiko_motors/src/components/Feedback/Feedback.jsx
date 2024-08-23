@@ -1,113 +1,92 @@
-import React, { useEffect, useState } from 'react'
-import Button from '../Button/Button'
 import './Feedback.css'
 import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+
+// const phoneRegex = /^\+7\d{10}$/;
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required('Name is required'),
+  surname: Yup.string()
+    .required('Surname is required'),
+  phoneNumber: Yup.string()
+    .required('Phone number is required'),
+    // .matches(phoneRegex, 'Телефон должен быть в формате +79000000000'),
+  auto: Yup.string()
+    .required('Auto is required'),
+});
 
 
 export default function Feedback() {
-  const [name, setName] = useState("")
-  const [surname, setSurname] = useState("")
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [auto, setAuto] = useState("")
-  
-  const [hasNameError, setHasNameError] = useState(false)
-  const [hasSurnameError, setHasSurnameError] = useState(false)
-  const [hasPhoneNumberError, setHasPhoneNumberError] = useState(false)
-  const [hasAutoError, setHasAutoError] = useState(false)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(validationSchema)
+  });
 
-  const [formNotValid, setFormNotValid] = useState(true)
-
-  function handleChange(event) {
-    console.log(event.target.value)
-    if (event.target.id == "name") {
-      setName(event.target.value)
-      setHasNameError(event.target.value.trim().length === 0)
-    } else if (event.target.id == "surname") {
-      setSurname(event.target.value)
-      setHasSurnameError(event.target.value.trim().length === 0)
-    } else if (event.target.id == "phoneNumber") {
-      setPhoneNumber(event.target.value)
-      setHasPhoneNumberError(event.target.value.trim().length === 0)
-    } else if (event.target.id == "auto") {
-      setAuto(event.target.value)
-      setHasAutoError(event.target.value.trim().length === 0)
-    }
-    
-  }
-
-  useEffect(() => {
-    if (hasNameError || hasSurnameError || hasPhoneNumberError || hasAutoError) {
-      setFormNotValid(true)
-    } else {
-      setFormNotValid(false)
-    }
-  }, [hasNameError, hasSurnameError, hasPhoneNumberError, hasAutoError])
-
-  const submitData = (e) => {
-    e.preventDefault();
+  const submitData = (data) => {
     fetch('https://mehiko-motors.duckdns.org/api/telegram', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, surname, phoneNumber, auto }),
-  })
+      body: JSON.stringify(data),
+    })
       .then((response) => response.json())
       .then((result) => toast.success(result.message));
   }
+
+  // const isFormValid = () => {
+  //   return Object.keys(errors)?.length === 0;
+  // }
 
   return (
     <div className='feedback-wrapper'>
       <span id='feedback' className='title'>Хотите расчитать стоимость определённой машины?</span>
       <span className='subtitle'>Оставьте заявку, и мы обязательно поможем вам.</span>
       <div className='feedback-form'>
-        <form action="">
+        <form onSubmit={handleSubmit(submitData)} action="">
+          <span>{errors.name?.message}</span>
           <input
           type="text"
           id='name'
-          value={name}
-          style={{
-            border: hasNameError ? '1px solid red' : null,
-          }}
-          onChange={handleChange}
+          name='name'
           placeholder='Имя'
+          {...register('name')}
           /> <br />
 
+          <span>{errors.surname?.message}</span>
           <input
           type="text"
           id='surname'
-          value={surname}
-          style={{
-            border: hasSurnameError ? '1px solid red' : null,
-          }}
-          onChange={handleChange}
+          name='surname'
+          {...register('surname')}
           placeholder='Фамилия'
           /> <br />
 
+          <span>{errors.phoneNumber?.message}</span>
           <input
           type="tel"
           id='phoneNumber'
-          value={phoneNumber}
-          style={{
-            border: hasPhoneNumberError ? '1px solid red' : null,
-          }}
-          onChange={handleChange}
-          placeholder='+7 (900) 000-00-00'
+          name='phoneNumber'
+          {...register('phoneNumber')}
+          placeholder='+79000000000'
           /> <br />
 
+          <span>{errors.auto?.message}</span>
           <input
           type="text"
           id='auto'
-          value={auto}
-          style={{
-            border: hasAutoError ? '1px solid red' : null,
-          }}
-          onChange={handleChange}
+          name='auto'
+          {...register('auto')}
           placeholder='BMW X6, 3 поколение'
           /> <br />
 
           <div className='btn-wrapper'>
-            <button id='submit' disabled={formNotValid} onClick={submitData}>Отправить</button>
+            <button type="submit" id='submit'>Отправить</button>
           </div>
         </form>
       </div>

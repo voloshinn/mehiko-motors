@@ -37,10 +37,6 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.feedback-form input:first-of-type {
-  margin-top: 2vh;
-}
-
 .btn-wrapper {
   @media (max-width: 500px) {
     display: flex;
