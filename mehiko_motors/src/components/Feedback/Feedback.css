@@ -65,6 +65,11 @@
   }
 }
 
+#submit:disabled {
+  cursor: not-allowed;
+  background-color: silver;
+}
+
 #submit:hover {
   opacity: 0.7;
   

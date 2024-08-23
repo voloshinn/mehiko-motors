@@ -15,7 +15,7 @@ export default function Feedback() {
   const [hasPhoneNumberError, setHasPhoneNumberError] = useState(false)
   const [hasAutoError, setHasAutoError] = useState(false)
 
-  const [formValid, setFormValid] = useState(false)
+  const [formNotValid, setFormNotValid] = useState(true)
 
   function handleChange(event) {
     console.log(event.target.value)
@@ -37,9 +37,9 @@ export default function Feedback() {
 
   useEffect(() => {
     if (hasNameError || hasSurnameError || hasPhoneNumberError || hasAutoError) {
-      setFormValid(true)
+      setFormNotValid(true)
     } else {
-      setFormValid(false)
+      setFormNotValid(false)
     }
   }, [hasNameError, hasSurnameError, hasPhoneNumberError, hasAutoError])
 
@@ -107,7 +107,7 @@ export default function Feedback() {
           /> <br />
 
           <div className='btn-wrapper'>
-            <button id='submit' disabled={formValid} onClick={submitData}>Отправить</button>
+            <button id='submit' disabled={formNotValid} onClick={submitData}>Отправить</button>
           </div>
         </form>
       </div>
