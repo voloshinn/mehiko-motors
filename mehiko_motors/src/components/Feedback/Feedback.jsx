@@ -106,7 +106,9 @@ export default function Feedback() {
           placeholder='BMW X6, 3 поколение'
           /> <br />
 
-          <Button disabled={formValid} onClick={submitData}>Отправить</Button>
+          <div className='btn-wrapper'>
+            <button id='submit' disabled={formValid} onClick={submitData}>Отправить</button>
+          </div>
         </form>
       </div>
     </div>

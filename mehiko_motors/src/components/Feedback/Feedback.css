@@ -6,6 +6,9 @@
   display: flexbox;
   align-items: center;
   margin-bottom: 1vh;
+  @media (max-width: 500px) {
+    width: 95vw;
+  }
 }
 
 .title {
@@ -26,7 +29,7 @@
   padding: 1.5vh;
   width: 80vw;
   @media (max-width: 600px) {
-    width: 95%;
+    width: 80vw;
   }
   margin-bottom: 1.5vh;
   border-radius: 20px;
@@ -38,6 +41,12 @@
   margin-top: 2vh;
 }
 
+.btn-wrapper {
+  @media (max-width: 500px) {
+    display: flex;
+    justify-content: center;
+  }
+}
 
 #submit {
   border: none;
@@ -50,21 +59,13 @@
   cursor: pointer;
   transition: 200ms ease-in-out;
   width: 19vh;
-  float: left;
-  @media (max-width: 480px) {
-    position: absolute;
-    top: 7px;
-    right: 7px;
+  float: right;
+  @media (max-width: 500px) {
+    float: left;
   }
 }
 
 #submit:hover {
   opacity: 0.7;
   
-}
-
-.submit-div {
-  width: 100%;
-  display: flex;
-  justify-content: center;
 }
